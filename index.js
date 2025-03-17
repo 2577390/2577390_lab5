@@ -24,14 +24,17 @@ let books = [
       }
 ];
 
+//done
 app.get('/whoami',(req,res) => {
     res.send({studentNumber:"2577390"});
 });
 
+//done
 app.get('/books',(req,res) => {
     res.send(books);
 });
 
+//done
 app.get('/books/:id',(req,res) => {
     const id = parseInt(req.params.id);
     const book = books.find( bk => bk.id === id);
@@ -41,6 +44,8 @@ app.get('/books/:id',(req,res) => {
     res.send(book);
 });
 
+
+//done
 app.post('/books',(req,res) => {
 
     if(!req.body.title || !req.body.details){
@@ -58,7 +63,7 @@ app.post('/books',(req,res) => {
     res.send(book);
 });
 
-
+//done
 app.put('/books/:id',(req,res) => {
 
     const id = parseInt(req.params.id);
@@ -73,7 +78,7 @@ app.put('/books/:id',(req,res) => {
     
 });
 
-
+//done
 app.post('/books/:id/details',(req,res) => {
 
     if(!req.body || !req.body.author || !req.body.genre ||!req.body.publicationYear){
@@ -96,6 +101,7 @@ app.post('/books/:id/details',(req,res) => {
     res.send(book);
 });
 
+//done
 app.delete('/books/:id',(req,res) => {
 
     const id = parseInt(req.params.id);
@@ -103,6 +109,7 @@ app.delete('/books/:id',(req,res) => {
     res.send(books);
 });
 
+//done
 app.delete('/books/:id/:detailId',(req,res) => {
 
     const id = parseInt(req.params.id);
@@ -113,5 +120,5 @@ app.delete('/books/:id/:detailId',(req,res) => {
 
 });
 
-
+//done
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
