@@ -36,7 +36,7 @@ app.get('/books/:id',(req,res) => {
     const id = parseInt(req.params.id);
     const book = books.find( bk => bk.id === id);
     if(!book){
-        res.status(404).send('404 Not Found');
+        res.status(404).send({"error": "The book is not found"});
     }
     res.send(book);
 });
@@ -44,7 +44,7 @@ app.get('/books/:id',(req,res) => {
 app.post('/books',(req,res) => {
 
     if(!req.body.title || !req.body.details){
-        res.status(400).send('400 Bad Request');
+        res.status(400).send({"error": "Missing required book details"});
         return;
     }
 
@@ -64,7 +64,7 @@ app.put('/books/:id',(req,res) => {
     const id = parseInt(req.params.id);
     let book = books.find( bk => bk.id === id);
     if(!book){
-        res.status(404).send('404 Not Found');
+        res.status(404).send({"error": "The book is not found"});
     }
 
     book.title = req.body.title;
@@ -76,8 +76,8 @@ app.put('/books/:id',(req,res) => {
 
 app.post('/books/:id/details',(req,res) => {
 
-    if(!req.body || !req.author ||!req.genre ||!req.publicationYear){
-        res.status(400).send('400 Bad Request');
+    if(!req.body || !req.body.author || !req.body.genre ||!req.body.publicationYear){
+        res.status(400).send({"error": "Missing required book details"});
         return;
     }
 
@@ -90,7 +90,7 @@ app.post('/books/:id/details',(req,res) => {
         "author": req.body.author,
         "genre": req.body.genre,
         "publicationYear": req.body.publicationYear
-      };
+    };
 
     book.details.push(details);
     res.send(book);
