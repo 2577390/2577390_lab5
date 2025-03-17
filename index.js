@@ -3,26 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
-let books = [
-    {
-        "id": 1,
-        "title": "To Kill a Mockingbird",
-        "details": [
-          {
-            "id": 1,
-            "author": "Harper Lee",
-            "genre": "Fiction",
-            "publicationYear": 1960
-          },
-          {
-            "id": 2,
-            "author": "James Lee",
-            "genre": "Action",
-            "publicationYear": 1960
-          }
-        ]
-      }
-];
+let books = [ ];
 
 //done
 app.get('/whoami',(req,res) => {
